@@ -12,7 +12,7 @@ Desde el año 2010, la [Oficilna de Software Libre](http://osl.ugr.es) viene org
 #Introducción
 
 Desde prácticamente el inicio de la
-[Oficilna de Software Libre](http://osl.ugr.es) de la universidad de
+[Oficina de Software Libre](http://osl.ugr.es) de la universidad de
 Granada y con el objetivo principal de
 [animar a los más pequeños a usar software libre de forma habitual y aumentar la alfabetización digital](http://www.opensourceworldconference.com/conferencia-virtual-2), a la vez que se ayuda a las familias de la Universidad de
 Granada y, desde el año 2010, de fuera de la universidad a conciliar
@@ -61,11 +61,42 @@ data <- read.csv("grupos-de-edad.csv")
 
 ```
 
+En este trabajo examinaremos, a continuación, la distribución de chicas y chicos por campus y grupo de edad en la siguiente sección. A continuación veremos la evolución de la proporción de chicas en diferentes agrupaciones de edad a lo largo de los años, la tendencia si la hubiera y las medias y, finalmente, expondremos nuestras conclusiones.
+
+##Distribución por edad
+
+Como se ha indicado, las edades en las que se aceptan inscripciones en el campus va desde los 7 hasta los 13 y en ocasiones 14 y 15 años. En los siguientes gráficos se expone, del año 2010 al 2016, el número de chicas y chicos para cada edad. 
 
 ![Chicos y chicas por edad, año 2010](img/2010.png)
 ![Chicos y chicas por edad, año 2011](img/2011.png)
+
+En estos dos primeros años se ve que, para las edades más tempranas, se da el caso de que haya más chicas que chicos. Incluso en 2011 hay más chicas de 12 años que chicos. 
+
 ![Chicos y chicas por edad, año 2012](img/2012.png)
+
+El panorama cambia claramente este año, con más chicos que chicas en cualquier edad.
+
 ![Chicos y chicas por edad, año 2013](img/2013.png)
 ![Chicos y chicas por edad, año 2014](img/2014.png)
 ![Chicos y chicas por edad, año 2015](img/2015.png)
+
+Todos estos años, del 2013 al 2015, hay algunas variaciones, pero en casi todos los grupos de edad salvo en los más pequeños y, ocasionalmente, para 12 años, hay más chicos que chicas en todas las edades. 
+
 ![Chicos y chicas por edad, año 2016](img/2016.png)
+
+Finalmente, este mismo año, salvo para 7 años en el que hay 5 chicas y 2 chicos, en el resto de las edades la proporción de chicos es siempre mayor, hasta ser abrumadora para 11 o más años. 
+
+A continuación examinaremos, por grupos de edades, cuál ha sido la evolución de esta proporción.
+
+## Evolución de la proporción de chicas
+
+```{r, echo=FALSE}
+ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+theme_tufte()
+```
+
+Agrupando por edades contiguas para que haya un número significativo de casos, en el gráfico anterior se muestra cuál es la evolución de la proporción de chicas en los campus del año 2010 al 2016. 
+```{r kable, echo=FALSE}
+library(knitr)
+kable(summary(data))
+```
+
