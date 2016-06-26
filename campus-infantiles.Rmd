@@ -65,7 +65,7 @@ data <- read.csv("grupos-de-edad.csv")
 
 En este trabajo examinaremos, a continuación, tras un breve estado del arte, la distribución de chicas y chicos por campus y grupo de edad en la siguiente sección. A continuación veremos la evolución de la proporción de chicas en diferentes agrupaciones de edad a lo largo de los años, la tendencia si la hubiera y las medias y, finalmente, expondremos nuestras conclusiones.
 
-#Estadod el arte
+#Estado del arte
 
 La actitud aparentemente negativa de las chicas hacia las tecnologías de la información ha sido constatada en numerosas ocasiones. Siguiendo una completa revisión doe la literatura en 2001, [@volman2001gender], el mismo autor en [@volman2005new] realizó una serie de encuestas realizadas en Estados Unidos entre profesores y alumnos de primaria y secundaria, se encontró que no sólo la actitud de las chicas era menos positiva, sino que también el tipo de tareas que realizaban en el ordenador eran diferentes. Un resultado similar, aunque para niños de edades algo superiores [@colley2003age], habla *pequeñas* diferencias, pero que se han acentuado respecto a estudios hechos en décadas anteriores, durante los 90.
 
