@@ -3,9 +3,11 @@ title: "Desigualdad de género en campus de informática"
 author: "Cecilia Merelo Molina y JJ Merelo"
 date: "26/06/2016"
 output: pdf_document
+bibliography: campus.bib
 ---
 
 ##Resumen
+
 Desde el año 2010, la [Oficilna de Software Libre](http://osl.ugr.es) viene organizando una serie de campus infantiles de software libre, donde se imparten conocimientos de ofimática y programación basados en Linux, el lenguaje de programación Scratch y paquetes ofimáticos libres. Desde el principio se ha notado disparidad de género dependiente de la edad, pero la proporción ha variado con los años. En este trabajo examinamos esa variación, tratando de buscar si hay una edad concreta en la que las chicas dejan de interesarse por la informática, lo que la convierte en una carrera poco atractiva para ellas, y si esa edad ha variado a lo largo de los años.
 
 
@@ -61,9 +63,15 @@ data <- read.csv("grupos-de-edad.csv")
 
 ```
 
-En este trabajo examinaremos, a continuación, la distribución de chicas y chicos por campus y grupo de edad en la siguiente sección. A continuación veremos la evolución de la proporción de chicas en diferentes agrupaciones de edad a lo largo de los años, la tendencia si la hubiera y las medias y, finalmente, expondremos nuestras conclusiones.
+En este trabajo examinaremos, a continuación, tras un breve estado del arte, la distribución de chicas y chicos por campus y grupo de edad en la siguiente sección. A continuación veremos la evolución de la proporción de chicas en diferentes agrupaciones de edad a lo largo de los años, la tendencia si la hubiera y las medias y, finalmente, expondremos nuestras conclusiones.
 
-##Distribución por edad
+#Estadod el arte
+
+La actitud aparentemente negativa de las chicas hacia las tecnologías de la información ha sido constatada en numerosas ocasiones. Siguiendo una completa revisión doe la literatura en 2001, [@volman2001gender], el mismo autor en [@volman2005new] realizó una serie de encuestas realizadas en Estados Unidos entre profesores y alumnos de primaria y secundaria, se encontró que no sólo la actitud de las chicas era menos positiva, sino que también el tipo de tareas que realizaban en el ordenador eran diferentes. Un resultado similar, aunque para niños de edades algo superiores [@colley2003age], habla *pequeñas* diferencias, pero que se han acentuado respecto a estudios hechos en décadas anteriores, durante los 90.
+
+No se ha encontrado ningún trabajo que se circunscriba a nuestro país y examine cómo obtan los jóvenes de enseñanza secundaria española por la tecnología, aunque sí se han encontrado algún estudio que la examina en el campo de los videojuegos [@escofet2007brecha]. Por eso es interesante este estudio, que examina opciones reales. 
+
+#Distribución por edad
 
 Como se ha indicado, las edades en las que se aceptan inscripciones en el campus va desde los 7 hasta los 13 y en ocasiones 14 y 15 años. En los siguientes gráficos se expone, del año 2010 al 2016, el número de chicas y chicos para cada edad. 
 
@@ -88,7 +96,7 @@ Finalmente, este mismo año, salvo para 7 años en el que hay 5 chicas y 2 chico
 
 A continuación examinaremos, por grupos de edades, cuál ha sido la evolución de esta proporción.
 
-## Evolución de la proporción de chicas
+# Evolución de la proporción de chicas
 
 ```{r, echo=FALSE}
 ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+theme_tufte()
@@ -112,4 +120,5 @@ En general se observa que el porcentaje de chicas disminuye con la edad, pero la
 
 La principal observación es la constatación de que el interés de las chicas, o de los padres, por los campus tecnológicos disminuye con la edad, especialmente a partir de los 9 años de edad, pero de forma mucho más pronunciada a partir de los 11 años. Desde el punto de vista de la elección de carreras tecnológicas esto es preocupante porque las chicas mostrarán poco interés por este tipo de carreras, optando por bachillerato biosanitario o por la opción de humanidades, vaciando por tanto los Bachilleratos que dan opción a carreras tecnológicas. De hecho, también el número total de inscripciones en cada uno de los grupos de edad varía, siendo los grupos hasta los 11 años los más completos y disminuyendo el número de inscripciones totales en los más mayores, como se puede observar también en las gráficas; es decir, el interés por la tecnología disminuye *en general en toda la población*, sólo que es más pronunciado en las chicas que en los chicos. 
 
+#Referencias
 
