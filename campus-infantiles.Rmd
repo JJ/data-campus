@@ -1,0 +1,23 @@
+---
+title: "Desigualdad de género en campus de informática"
+author: "Cecilia Merelo Molina y JJ Merelo"
+date: "26/06/2016"
+output: pdf_document
+---
+
+##Resumen
+Desde el año 2010, la [Oficilna de Software Libre](http://osl.ugr.es) viene organizando una serie de campus infantiles de software libre, donde se imparten conocimientos de ofimática y programación basados en Linux, el lenguaje de programación Scratch y paquetes ofimáticos libres. Desde el principio se ha notado disparidad de género dependiente de la edad, pero la proporción ha variado con los años. En este trabajo examinamos esa variación, tratando de buscar si hay una edad concreta en la que las chicas dejan de interesarse por la informática, lo que la convierte en una carrera poco atractiva para ellas, y si esa edad ha variado a lo largo de los años.
+
+
+You can also embed plots, for example:
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(ggthemes)
+
+data <- read.csv("grupos-de-edad.csv")
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
