@@ -9,7 +9,48 @@ output: pdf_document
 Desde el año 2010, la [Oficilna de Software Libre](http://osl.ugr.es) viene organizando una serie de campus infantiles de software libre, donde se imparten conocimientos de ofimática y programación basados en Linux, el lenguaje de programación Scratch y paquetes ofimáticos libres. Desde el principio se ha notado disparidad de género dependiente de la edad, pero la proporción ha variado con los años. En este trabajo examinamos esa variación, tratando de buscar si hay una edad concreta en la que las chicas dejan de interesarse por la informática, lo que la convierte en una carrera poco atractiva para ellas, y si esa edad ha variado a lo largo de los años.
 
 
-You can also embed plots, for example:
+#Introducción
+
+Desde prácticamente el inicio de la
+[Oficilna de Software Libre](http://osl.ugr.es) de la universidad de
+Granada y con el objetivo principal de
+[animar a los más pequeños a usar software libre de forma habitual y aumentar la alfabetización digital](http://www.opensourceworldconference.com/conferencia-virtual-2), a la vez que se ayuda a las familias de la Universidad de
+Granada y, desde el año 2010, de fuera de la universidad a conciliar
+su vida laboral con el cuidado de la familia, se han organizado estos
+campus infantiles de software libre en el mes de julio, inicialmente
+para 75 niños de 7 a 13 años, pero con ligeras variaciones a lo largo
+de los años; algunos años se hicieron dos turnos, otros años se amplió
+hasta 150 niños, en algunos casos se amplió hasta 14 o 15 años;
+finalmente, en este año 2016, se ha quedado entre 7 y 13 años, aunque
+hay algunas excepciones.
+
+Algunas inscripciones las controla directamente la oficina, y de ellas
+son de las que tenemos datos sobre edad; por lo tanto, de los años que
+figuran en este trabajo, 2010 a 2016, el número de inscripciones varía
+entre varias decenas y un centenar, y todas corresponden a
+inscripciones de familias que no son personal de la universidad o no
+tienen acceso a las subvenciones. Se trata, pues, de una *muestra* de
+la población total por grupo de edades, pero es una muestra
+significativa que incluye aproximadamente a la mitad de todos los
+asistentes. En todo caso, del otro grupo de la UGR no se tenía
+información de edad, sólo por grupos, por lo que se ha preferido
+prescindir de esa información sin la precisión suficiente.
+
+A lo largo de los años se ha ido encontrando una disparidad de género
+clara por grupos de edad. Mientras que en los grupos de niños más
+pequeños las chicas igualan o incluso superan a los chicos, según va
+avanzando la edad las diferencias se van acentuando; también se van
+acentuando las diferencias a lo largo de los años. Cabe notar que, en
+este caso, son los padres los que eligen matricular a sus hijos en
+esta actividad, aunque es cierto que, sobre todo dependiendo de la
+edad, las niñas y niños expresarán su opinión sobre si quieren hacerla
+o no y, sobre todo, si quieren volver en años sucesivos.
+
+Sea como fuere, la disminución del número de chicas con la edad se
+plasmará, más adelante, en un desinterés por las opciones más técnicas
+de la ESO y Bachillerato y posteriormente en la elección de una
+carrera relacionada con las TIC, llegando a los extremos actuales de
+alrededor de un 10% de chicas en este tipo de carreras.
 
 
 ```{r, echo=FALSE}
@@ -20,4 +61,11 @@ data <- read.csv("grupos-de-edad.csv")
 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+![Chicos y chicas por edad, año 2010](img/2010.png)
+![Chicos y chicas por edad, año 2011](img/2011.png)
+![Chicos y chicas por edad, año 2012](img/2012.png)
+![Chicos y chicas por edad, año 2013](img/2013.png)
+![Chicos y chicas por edad, año 2014](img/2014.png)
+![Chicos y chicas por edad, año 2015](img/2015.png)
+![Chicos y chicas por edad, año 2016](img/2016.png)
