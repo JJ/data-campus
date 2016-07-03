@@ -142,8 +142,16 @@ d\'ecadas anteriores, durante los 90.
 No se ha encontrado ning\'un trabajo que se circunscriba a nuestro pa\'is y
 examine c\'omo optan los j\'ovenes de ense\~nanza secundaria espa\~nola por la
 tecnolog\'ia, aunque s\'i se han encontrado alg\'un estudio que la examina en
-el campo de los videojuegos \cite{escofet2007brecha}. Por eso es
-interesante este estudio, que examina opciones reales.
+el campo de los videojuegos \cite{escofet2007brecha} y a un trabajo
+fin de m\'aster recientemente publicado \cite{mila2016} que examina
+las actitudes de estudiantes de ESO y Bachillerato frente a las
+carreras de ciencias y letras, constatando el poco inter\'es que
+tienen por las mismas y mostrando que, en el instituto estudiado, hay
+a\~nos en los que no hay ninguna chica en la opci\'on cient\'ifico-t\'ecnica
+del Bachillerato. Por eso es
+interesante el estudio presentado en este artículo, que examina
+opciones reales, aunque reducidas a un área y rango de a\~nos
+determinado. 
 
 \section{Distribuci\'on por edad}\label{distribuciuxf3n-por-edad}
 
