@@ -204,14 +204,18 @@ chicos, en el resto de las edades la proporci\'on de chicos es siempre
 mayor, hasta ser abrumadora para 11 o m\'as a\~nos.
 
 A continuaci\'on examinaremos, por grupos de edades, cu\'al ha sido la
-evoluci\'on de esta proporci\'on.
+evoluci\'on de esta proporci\'on en la Figura \ref{fig:evol}.
 
 \section{Evoluci\'on de la proporci\'on de
 chicas}\label{evoluciuxf3n-de-la-proporciuxf3n-de-chicas}
 
+\begin{figure}[htbp]
+\centering
 <<evolucion, cache=FALSE,echo=FALSE>>=
-ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+theme_tufte()
+ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+ guides(color=guide_legend(title="Grupos de edad"))+theme_tufte()
 @
+\caption{Evoluci\'on de la proporci\'on de chicas por grupo de edad. \label{fig:evol}}
+\end{figure}
 
 Agrupando por edades contiguas para que haya un n\'umero significativo de
 casos, en el gr\'afico anterior se muestra cu\'al es la evoluci\'on de la
