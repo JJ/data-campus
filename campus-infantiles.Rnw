@@ -156,7 +156,7 @@ chicas y chicos para cada edad.
 \centering
 \includegraphics[width=0.95\textwidth]{img/2010.png}
 \includegraphics[width=0.95\textwidth]{img/2011.png}
-\caption{Chicos y chicas por edad, a\~nos 2013 a 2015}
+\caption{Chicos y chicas por edad, a\~nos 2010 y 2011}
 \end{figure}
 
 En estos dos primeros a\~nos se ve que, para las edades m\'as tempranas, se
