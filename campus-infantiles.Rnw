@@ -149,8 +149,8 @@ carreras de ciencias y letras, constatando el poco inter\'es que
 tienen por las mismas y mostrando que, en el instituto estudiado, hay
 a\~nos en los que no hay ninguna chica en la opci\'on cient\'ifico-t\'ecnica
 del Bachillerato. Por eso es
-interesante el estudio presentado en este artículo, que examina
-opciones reales, aunque reducidas a un área y rango de a\~nos
+interesante el estudio presentado en este art\'iculo, que examina
+opciones reales, aunque reducidas a un \'area y rango de a\~nos
 determinado. 
 
 \section{Distribuci\'on por edad}\label{distribuciuxf3n-por-edad}
@@ -209,20 +209,33 @@ evoluci\'on de esta proporci\'on.
 \section{Evoluci\'on de la proporci\'on de
 chicas}\label{evoluciuxf3n-de-la-proporciuxf3n-de-chicas}
 
-<<evolucion, include=FALSE, cache=FALSE>>=
+<<evolucion, cache=FALSE,echo=FALSE>>=
 ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+theme_tufte()
 @
 
 Agrupando por edades contiguas para que haya un n\'umero significativo de
 casos, en el gr\'afico anterior se muestra cu\'al es la evoluci\'on de la
 proporci\'on de chicas en los campus del a\~no 2010 al 2016. A continuaci\'on
-se muestra el resumen de los datos por edades.
+se muestra el resumen de los datos por edades en la Tabla \ref{tab:res}.
 
-<<resumen, include=FALSE, cache=FALSE>>=
-library(knitr)
-data.guay <- data.frame(edad.hasta.8 = data$X7.8, de.9.a.10 = data$X9.10, de.11.en.adelante = data$X11.)
-kable(summary(data.guay))
-@
+\begin{table}
+\caption{Resumen estad\'istico para los diferentes grupos de edad.\label{tab:res}}
+\centering
+\begin{tabular}[t]{|l|c|c|c|}
+\hline
+Medida & Edad hasta 8 &   De 9 a 10 & De 11 en adelante\\
+\hline
+Min.  & 0.2000 &   0.1250 &    0.1538\\
+\hline
+Median &0.5000 &  0.3889 &  0.3000\\
+\hline
+Mean   &0.4888 &  0.3959 &   0.2793\\
+\hline
+Max.   &0.8000 &    0.6429 &    0.3400\\
+\hline
+\end{tabular}
+\end{table}
+
 
 En esa tabla, que muestra el resumen de la \emph{proporci\'on de chicas}
 en el campus, se ve que la mediana medida a lo largo de los a\~nos va
