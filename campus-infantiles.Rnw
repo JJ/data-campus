@@ -160,69 +160,69 @@ el campus va desde los 7 hasta los 13 y en ocasiones 14 y 15 a\~nos. En
 los siguientes gr\'aficos se expone, del a\~no 2010 al 2016, el n\'umero de
 chicas y chicos para cada edad.
 
-\begin{figure}[htbp]
+\begin{figure}[h!tb]
 \centering
-\includegraphics[width=0.95\textwidth]{img/2010.png}
-\includegraphics[width=0.95\textwidth]{img/2011.png}
+\includegraphics[width=0.45\textwidth]{img/2010.png}
+\includegraphics[width=0.45\textwidth]{img/2011.png}
 \caption{Chicos y chicas por edad, a\~nos 2010 y 2011}
 \end{figure}
 
 En estos dos primeros a\~nos se ve que, para las edades m\'as tempranas, se
 da el caso de que haya m\'as chicas que chicos. Incluso en 2011 hay m\'as
 chicas de 12 a\~nos que chicos.
-
-\begin{figure}[htbp]
+%
+\begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{img/2012.png}
 \caption{Chicos y chicas por edad, a\~no 2012}
 \end{figure}
-
-El panorama cambia claramente este a\~no, con m\'as chicos que chicas en
-cualquier edad.
-
+%
+El panorama cambia claramente el a\~no 2013, con m\'as chicos que chicas en
+cualquier edad, como se puede ver en la Figura \ref{fig:1315}
+%
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{img/2013.png} 
 \includegraphics[width=0.95\textwidth]{img/2014.png}
 \includegraphics[width=0.95\textwidth]{img/2015.png}
-\caption{Chicos y chicas por edad, a\~nos 2013 a 2015}
+\caption{Chicos y chicas por edad, a\~nos 2013 a 2015.\label{fig:1315}}
 \end{figure}
-
+%
 Todos estos a\~nos, del 2013 al 2015, hay algunas variaciones, pero en
 casi todos los grupos de edad salvo en los m\'as peque\~nos y,
 ocasionalmente, para 12 a\~nos, hay m\'as chicos que chicas en todas las
 edades.
-
-\begin{figure}[htbp]
+%
+\begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{img/2016.png}
-\caption{Chicos y chicas por edad, a\~no 2016}
+\caption{Chicos y chicas por edad, a\~no 2016.\label{fig:16}}
 \end{figure}
 
-Finalmente, este mismo a\~no, salvo para 7 a\~nos en el que hay 5 chicas y 2
+Finalmente, este mismo a\~no, representado en la Figura \ref{fig:16}, salvo para la edad de 7 a\~nos en el que hay 5 chicas y 2
 chicos, en el resto de las edades la proporci\'on de chicos es siempre
 mayor, hasta ser abrumadora para 11 o m\'as a\~nos.
 
-A continuaci\'on examinaremos, por grupos de edades, cu\'al ha sido la
+En la siguiente secci\'on  examinaremos, por grupos de edades, cu\'al ha sido la
 evoluci\'on de esta proporci\'on en la Figura \ref{fig:evol}.
 
 \section{Evoluci\'on de la proporci\'on de
 chicas}\label{evoluciuxf3n-de-la-proporciuxf3n-de-chicas}
 
-\begin{figure}[htbp]
+\begin{figure}[h!t]
 \centering
 <<evolucion, cache=FALSE,echo=FALSE>>=
 ggplot()+geom_line(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_line(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X7.8),color="7-8"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X9.10),color="9-10"))+geom_point(data=data,aes(x=AÑO,y=as.numeric(X11.),color="11+"))+ylab("Porcentaje de chicas")+ guides(color=guide_legend(title="Grupos de edad"))+theme_tufte()
 @
 \caption{Evoluci\'on de la proporci\'on de chicas por grupo de edad. \label{fig:evol}}
 \end{figure}
-
+%
 Agrupando por edades contiguas para que haya un n\'umero significativo de
 casos, en el gr\'afico anterior se muestra cu\'al es la evoluci\'on de la
 proporci\'on de chicas en los campus del a\~no 2010 al 2016. A continuaci\'on
 se muestra el resumen de los datos por edades en la Tabla \ref{tab:res}.
 
-\begin{table}
+\begin{table}[h!t]
 \caption{Resumen estad\'istico para los diferentes grupos de edad.\label{tab:res}}
 \centering
 \begin{tabular}[t]{|l|c|c|c|}
@@ -246,7 +246,7 @@ en el campus, se ve que la mediana medida a lo largo de los a\~nos va
 desde 50\% para los m\'as peque\~nos a 30\% para los mayores, y la media de
 alrededor de 49\% para los m\'as peque\~nos a 38\% para los mayores.
 
-La gr\'afica muestra tambi\'en, en el grupo de mayor edad, una estabilidad
+La gr\'afica, presentada en la Figura \ref{fig:evol}, muestra tambi\'en, en el grupo de mayor edad, una estabilidad
 alrededor del 30\% con tendencia decreciente, especialmente en el \'ultimo
 a\~no donde cae muy por debajo del 20\%. Aunque hay pocos datos para
 establecer una correlaci\'on, en general hay una proporci\'on bastante alta
