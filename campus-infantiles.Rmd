@@ -6,12 +6,21 @@ output: pdf_document
 bibliography: campus.bib
 ---
 
-##Resumen
+## Resumen
 
-Desde el año 2010, la [Oficina de Software Libre](http://osl.ugr.es) viene organizando una serie de campus infantiles de software libre, donde se imparten conocimientos de ofimática y programación basados en Linux, el lenguaje de programación Scratch y paquetes ofimáticos libres. Desde el principio se ha notado disparidad de género dependiente de la edad, pero la proporción ha variado con los años. En este trabajo examinamos esa variación, tratando de buscar si hay una edad concreta en la que las chicas dejan de interesarse por la informática, lo que la convierte en una carrera poco atractiva para ellas, y si esa edad ha variado a lo largo de los años.
+Desde el año 2010, la [Oficina de Software Libre](http://osl.ugr.es)
+viene organizando una serie de campus infantiles de software libre,
+donde se imparten conocimientos de ofimática y programación basados en
+Linux, el lenguaje de programación Scratch y paquetes ofimáticos
+libres. Desde el principio se ha notado disparidad de género
+dependiente de la edad, pero la proporción ha variado con los años. En
+este trabajo examinamos esa variación, tratando de buscar si hay una
+edad concreta en la que las chicas dejan de interesarse por la
+informática, lo que la convierte en una carrera poco atractiva para
+ellas, y si esa edad ha variado a lo largo de los años. 
 
 
-#Introducción
+# Introducción
 
 Desde prácticamente el inicio de la
 [Oficina de Software Libre](http://osl.ugr.es) de la universidad de
@@ -26,7 +35,8 @@ hasta 150 niños, en algunos casos se amplió hasta 14 o 15 años;
 finalmente, en este año 2016, se ha quedado entre 7 y 13 años, aunque
 hay algunas excepciones.
 
-Algunas inscripciones las controla directamente la oficina, y de ellas
+Algunas inscripciones, las procedentes de fuera de la universidad, son
+controladas directamente por la OSL, y de ellas
 son de las que tenemos datos sobre edad; por lo tanto, de los años que
 figuran en este trabajo, 2010 a 2016, el número de inscripciones varía
 entre varias decenas y un centenar, y todas corresponden a
