@@ -10,3 +10,9 @@ data.percentage <- spread(data.total,Genero,Valor)
 data.percentage$porcentaje <- data.percentage$" Mujeres"/data.percentage$" Total"
 ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
+data.Granada <- data[data$Universidad=='Granada',]
+ggplot(data.Granada,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Granada')
+
+data.percentage <- spread(data.Granada,Genero,Valor)
+data.percentage$porcentaje <- data.percentage$" Mujeres"/data.percentage$" Total"
+ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
