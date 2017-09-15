@@ -1,8 +1,8 @@
-Año,Carrera,Mujeres,Hombres
-2017,Informática,141,1187
+Año,Carrera,Mujeres,Hombres,NuevaMujeres,NuevaHombres
+2017,Informática,141,1187,30,271
 2017,Informática (Ceuta),10,50
-2017,Teleco,90,380
-2017,DGIIM,50,140
+2017,Teleco,90,380,20,83
+2017,DGIIM,50,140,15,36
 2016,DGIIM,38,122
 2016,Teleco,86,386
 2016,Informática,126,1148
