@@ -4,6 +4,11 @@ library(tidyr)
 library(dplyr)
 
 data <- read.csv("mujeres-en-informática-desde-1986-sin-UNED.csv", fileEncoding="latin1")
+data.por.uni <- data[data$Genero==' Total',]
+data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas Presenciales',]
+data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas No Presenciales',]
+data.por.uni <- data.por.uni[data.por.uni$Universidad!='Unis sin UNED',]
+ggplot(data.por.uni,aes(x=Curso,y=Valor,group=Universidad,color=Universidad))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 data.total <- data[data$Universidad=='Unis sin UNED',]
 ggplot(data.total,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
