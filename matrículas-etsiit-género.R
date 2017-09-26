@@ -5,7 +5,8 @@ library(tidyr)
 data <- read.csv("grados-género-2012-2017.csv")
 data$total <- data$Mujeres+data$Hombres
 data$porcentaje <- data$Mujeres/data$total
-
+data$totalNueva <- data$NuevaMujeres+data$NuevaHombres
+data$porcentajeNueva <- data$NuevaMujeres/data$totalNueva
 
 ggplot()+geom_line(data=data,aes(x=Año,y=porcentaje,color=Carrera))+ylab("Porcentaje de mujeres")+ guides(color=guide_legend(title="Carreras"))+theme_tufte()
 
