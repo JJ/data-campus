@@ -56,3 +56,6 @@ data.percentage.UAL$porcentaje <- data.percentage.UAL$" Mujeres"/data.percentage
 ggplot(data.percentage.UAL,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 ggplot()+geom_line(data=data.percentage.UMA,aes(x=Curso,y=porcentaje,color='UMA',group=1))+geom_line(data=data.percentage.UGR,aes(x=Curso,y=porcentaje,color='UGR',group=1))+geom_line(data=data.percentage.Jaen,aes(x=Curso,y=porcentaje,color='UJA',group=1))+geom_line(data=data.percentage.UAL,aes(x=Curso,y=porcentaje,color='UAL',group=1)) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+data.UCA <- data[data$Universidad=='Cádiz',]
+ggplot() +geom_line(data=data.UCA,aes(x=Curso,y=Total,group=1))+geom_line(data=data.UCA,aes(x=Curso,y=Mujeres,color=Mujeres,group=1) ) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Cádiz')
