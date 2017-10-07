@@ -16,6 +16,7 @@ data.percentage <- spread(data.total,Genero,Valor)
 data.percentage$porcentaje <- data.percentage$Mujeres/data.percentage$Total
 ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
+# Calcula porcentajes y lo traza
 data <-  spread(data,Genero,Valor)
 data$porcentaje <- data$Mujeres/data$Total
 mutate.deltap <- data %>% group_by(Universidad) %>% mutate(delta.p=c(NA,diff(porcentaje)))
@@ -26,36 +27,30 @@ data.last <- data[data$Curso=="2016-2017",]
 ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
+# Máximos y mínimos
+universidades <- levels(unique(data$Universidad))
+porcentajes.universidad <- data.frame(uni=character(),
+                                      max=double(),
+                                      min=double(),
+                                      last=double(),
+                                      min.to.last=double(),
+                                      max.to.last=double)
 
-data.Granada <- data[data$Universidad=='Granada',]
-ggplot(data.Granada,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Granada')
+for(i in 1:length(universidades)){
+    porcentaje.esta <- data[data$Universidad==universidades[i],]$porcentaje
+    last <- porcentaje.esta[length(porcentaje.esta)]
+    this.max <- max(porcentaje.esta)
+    this.min <- min(porcentaje.esta)
+    
+    porcentajes.universidad <- rbind( porcentajes.universidad,
+                                     data.frame(uni=universidades[i],
+                                                last=last*100,
+                                                max=this.max*100,
+                                                min=this.min*100,
+                                                min.to.last= (last - this.min)*100,
+                                                max.to.last= (this.max - last)*100 ))
+}
 
-data.percentage.UGR <- spread(data.Granada,Genero,Valor)
-data.percentage.UGR$porcentaje <- data.percentage.UGR$" Mujeres"/data.percentage.UGR$" Total"
-ggplot(data.percentage.UGR,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')
 
-data.Malaga <- data[data$Universidad=='Málaga',]
-ggplot(data.Malaga,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Málaga')
-
-data.percentage.UMA <- spread(data.Malaga,Genero,Valor)
-data.percentage.UMA$porcentaje <- data.percentage.UMA$" Mujeres"/data.percentage.UMA$" Total"
-ggplot(data.percentage.UMA,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-data.Jaen <- data[data$Universidad=='Jaén',]
-ggplot(data.Jaen,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Jaén')
-
-data.percentage.Jaen <- spread(data.Jaen,Genero,Valor)
-data.percentage.Jaen$porcentaje <- data.percentage.Jaen$" Mujeres"/data.percentage.Jaen$" Total"
-ggplot(data.percentage.Jaen,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-data.UAL <- data[data$Universidad=='Almería',]
-ggplot(data.UAL,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Almería')
-
-data.percentage.UAL <- spread(data.UAL,Genero,Valor)
-data.percentage.UAL$porcentaje <- data.percentage.UAL$" Mujeres"/data.percentage.UAL$" Total"
-ggplot(data.percentage.UAL,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-ggplot()+geom_line(data=data.percentage.UMA,aes(x=Curso,y=porcentaje,color='UMA',group=1))+geom_line(data=data.percentage.UGR,aes(x=Curso,y=porcentaje,color='UGR',group=1))+geom_line(data=data.percentage.Jaen,aes(x=Curso,y=porcentaje,color='UJA',group=1))+geom_line(data=data.percentage.UAL,aes(x=Curso,y=porcentaje,color='UAL',group=1)) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-data.UCA <- data[data$Universidad=='Cádiz',]
-ggplot() +geom_line(data=data.UCA,aes(x=Curso,y=Total,group=1))+geom_line(data=data.UCA,aes(x=Curso,y=Mujeres,color=Mujeres,group=1) ) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Universidad de Cádiz')
+ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Bajada porcentual desde máximo')
