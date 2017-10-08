@@ -84,3 +84,7 @@ ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identi
 
 totales.curso <- totales.curso %>% mutate(delta.t=c(NA,diff(total)))
 totales.curso <- totales.curso %>% mutate(delta.m=c(NA,diff(mujeres)))
+totales.curso$deltapt <- 100*(totales.curso$delta.t/totales.curso$total)
+totales.curso$deltapm <- 100*(totales.curso$delta.m/totales.curso$mujeres)
+
+ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Cambio anual en las matrículas en informática')
