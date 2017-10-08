@@ -60,7 +60,8 @@ ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill
 
 
 # Porcentajes por curso
-cursos <-  distinct(data.sin.totales, Curso)$Curso
+cursos <-  sort(distinct(data.sin.totales, Curso)$Curso)
+
 totales.curso <- data.frame(curso=character(),
                             mujeres=integer(),
                             total=integer(),
@@ -80,3 +81,6 @@ for(i in 1:length(cursos)){
     
 }
 ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje nacional de mujeres en Informática')
+
+totales.curso <- totales.curso %>% mutate(delta.t=c(NA,diff(total)))
+totales.curso <- totales.curso %>% mutate(delta.m=c(NA,diff(mujeres)))
