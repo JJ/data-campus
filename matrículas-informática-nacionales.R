@@ -28,7 +28,10 @@ ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcent
 ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 # Máximos y mínimos
-universidades <- levels(unique(data$Universidad))
+data.sin.totales <-  data[data$Universidad!='Univ. Públicas Presenciales',]
+data.sin.totales <- data.sin.totales[data.sin.totales$Universidad!='Univ. Públicas No Presenciales',]
+data.sin.totales <- data.sin.totales[data.sin.totales$Universidad!='Unis sin UNED',]
+universidades <-  distinct(data.sin.totales, Universidad)$Universidad
 porcentajes.universidad <- data.frame(uni=character(),
                                       max=double(),
                                       min=double(),
@@ -37,7 +40,7 @@ porcentajes.universidad <- data.frame(uni=character(),
                                       max.to.last=double)
 
 for(i in 1:length(universidades)){
-    porcentaje.esta <- data[data$Universidad==universidades[i],]$porcentaje
+    porcentaje.esta <- data.sin.totales[data.sin.totales$Universidad == universidades[i],]$porcentaje
     last <- porcentaje.esta[length(porcentaje.esta)]
     this.max <- max(porcentaje.esta)
     this.min <- min(porcentaje.esta)
@@ -54,3 +57,26 @@ for(i in 1:length(universidades)){
 ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')
 
 ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Bajada porcentual desde máximo')
+
+
+# Porcentajes por curso
+cursos <-  distinct(data.sin.totales, Curso)$Curso
+totales.curso <- data.frame(curso=character(),
+                            mujeres=integer(),
+                            total=integer(),
+                            porcentaje=double())
+
+for(i in 1:length(cursos)){
+    
+    este.curso <- data.sin.totales[data.sin.totales$Curso==cursos[i],]
+    este.curso.mujeres <- sum(este.curso$Mujeres)
+    este.curso.total <- sum(este.curso$Total)
+
+    totales.curso <- rbind( totales.curso,
+                           data.frame(curso=cursos[i],
+                                      mujeres=este.curso.mujeres,
+                                      total=este.curso.total,
+                                      porcentaje=100*(este.curso.mujeres/este.curso.total)))
+    
+}
+ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje nacional de mujeres en Informática')
