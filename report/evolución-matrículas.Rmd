@@ -3,6 +3,8 @@ title: "Evolución de la matrícula femenina en universidades públicas español
 author: "JJ Merelo"
 date: "9 de octubre de 2017"
 output: pdf_document
+bibliography: refs.bib
+abstract: "
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +13,7 @@ require(ggthemes)
 library(tidyr)
 library(dplyr)
 
-data <- read.csv("mujeres-en-informática-desde-1986-sin-UNED.csv", fileEncoding="latin1")
+data <- read.csv("../mujeres-en-informática-desde-1986-sin-UNED.csv", fileEncoding="latin1")
 data.por.uni <- data[data$Genero=='Total',]
 data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas Presenciales',]
 data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas No Presenciales',]
@@ -104,3 +106,6 @@ ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujer
 
 ## Resultados
 
+## Agradecimientos
+
+Informe elaborado con la colaboración de la Fundación Española para la Ciencia y la Tecnología-Ministerio de Economía, Industria y Competitividad bajo el proyecto  FCT-2016-11678.
