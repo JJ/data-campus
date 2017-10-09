@@ -31,13 +31,31 @@ La pérdida de diversidad en las titulaciones de Informática que se ha producid
 * La tendencia general y las variaciones particulares por universidad.
 * Finalmente, y particularizando en la Universidad de Granada, si ha habido algún impacto medible de las políticas llevadas a cabo principalmente por la Escuela Técnica Superior de Ingeniería Informática a través de la Oficina de Software Libre de la Universidad de Granada.
 
-No se han encontrado muchos estudios de este estilo hasta el momento; un estudio no muy reciente [@galpin1993gender] se concentra en una universidad sudafricana, por ejemplo. Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas en el medio, incluso el largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirman que las chicas tienen una idea de las carreras dominada por los estereotipos de género; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. 
+No se han encontrado muchos estudios de este estilo hasta el momento; un estudio no muy reciente [@galpin1993gender] se concentra en una universidad sudafricana, por ejemplo; otro estudio posterior se refiere a una universidad australiana, la de Murdoch [@downes2000exploratory]; en este caso los porcentajes de matrícula femenina son bastante altos y sin una tendencia descendente clara como ocurre en España. 
 
-```
-ggplot(data.por.uni,aes(x=Curso,y=Valor,group=Universidad,color=Universidad))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas en el medio, incluso el largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirman que las chicas tienen una idea de las carreras dominada por los estereotipos de género; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. Estos dos factores tendrán que tenerse en cuenta para analizar el *retraso* entre el diseño y aplicación de una política y su efectividad, aunque los números que manejamos en este caso sólo permiten hacer conjeturas y formular hipótesis que podrán ser validadas con estudios con mayor granularidad o directamente con encuestas *in situ*
+
+A continuación expondremos los resultados obtenidos del estudio de las matrículas de informática en España.
+
+# Resultados
+
+Todos los meses de marzo, aproximadamente, las universidades españolas remiten al Ministerio de Educación los datos de matrícula, una vez que se ha estabilizado la misma y se han validado todos los datos. Estos datos se publican en [la web del ministerio](https://www.educacion.gob.es/educabase/menu.do?type=pcaxis&path=/Universitaria/Series/Estudiantes/Egresados/&file=pcaxis&l=s0). En general, estos datos tienen una alta fiabilidad. Los datos se extrajeron de la web y se procesaron para poder tratarse con scripts en R. Estos scripts forman parte del fuente de este documento, son software libre y se pueden descargar desde el repositorio del mismo, https://github.com/JJ/data-campus.
+
+Analicemos primero cómo ha evolucionado el total de estudiantes, total y el de mujeres. En este análisis analizamos sólo las universidades presenciales.
+
+```{r total, echo=FALSE}
 data.total <- data[data$Universidad=='Unis sin UNED',]
 ggplot(data.total,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```   
 
+
+
+
+
+
+
+
+```{r otro, echo=FALSE}
 data.percentage <- spread(data.total,Genero,Valor)
 data.percentage$porcentaje <- data.percentage$Mujeres/data.percentage$Total
 ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
