@@ -48,18 +48,17 @@ data.total <- data[data$Universidad=='Unis sin UNED',]
 ggplot(data.total,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```   
 
+Como se ve, ha habido una evolución del número de estudiantes de informática que alcanzó un pico en el año 2003, para descender de forma más o menos constante hasta la actualidad, en la que parece que se está experimentando un leve repunte. La evolución de las matrículas femeninas sigue más o menos la misma tendencia, aunque con dos picos, uno algo anterior y otro simultáneo, y un descenso constante desde el curso 2003-4 que parece que se está deteniendo en el último año, por contrapartida al aumento que ha experimentado la matrícula total este último curso registrado. La evolución del porcentaje se muestra en la gráfica siguiente.
 
-
-
-
-
-
-
-```{r otro, echo=FALSE}
+```{r porcentaje, echo=FALSE}
 data.percentage <- spread(data.total,Genero,Valor)
 data.percentage$porcentaje <- data.percentage$Mujeres/data.percentage$Total
 ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
+Salvo un pequeño cambio de tendencia en los cursos de 1997 a 1999 que corresponderían al primer pico, el descenso ha sido constante, desde un porcentaje inicial del 30% a un porcentaje total alrededor del 12%; es decir, aproximadamente de cada diez matrículas en Informática en las universidades españolas, 1 es una mujer. 
+
+```{r poruniversidad, echo=FALSE}
 # Calcula porcentajes y lo traza
 data <-  spread(data,Genero,Valor)
 data$porcentaje <- data$Mujeres/data$Total
