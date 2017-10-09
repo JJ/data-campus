@@ -4,7 +4,7 @@ author: "JJ Merelo"
 date: "9 de octubre de 2017"
 output: pdf_document
 bibliography: refs.bib
-abstract: "
+abstract: "Los últimos años han visto una disminución en el porcentaje de mujeres en los estudios universitarios de informática tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, aumentando la diversidad en las aulas. Sin embargo, este declive a nivel nacional que resulta evidente no se ha estudiado sistemáticamente hasta este informe. Este estudio sistemático persigue por un lado establecer cuales son las tendencias actuales para constatar o no lo que por otro lado resulta evidente, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias globales en matrículas en los estudios de Informática. Este estudio es un primer paso para establecer políticas que permitan atajar estas causas a todos los niveles. Los datos que se usan son datos oficiales del ministerio y abarcan desde 1986 hasta el último año disponible, 2016-2017"
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +18,22 @@ data.por.uni <- data[data$Genero=='Total',]
 data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas Presenciales',]
 data.por.uni <- data.por.uni[data.por.uni$Universidad!='Univ. Públicas No Presenciales',]
 data.por.uni <- data.por.uni[data.por.uni$Universidad!='Unis sin UNED',]
+```
+
+# Introducción
+
+En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de animación a la Informática para todas las edades, es necesario evaluar, si es posible de forma cuantitativa, el impacto de tales políticas. La mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones disgregados por universidad y disciplina.
+
+La pérdida de diversidad en las titulaciones de Informática que se ha producido en los últimos 30 años tiene diversas causas. La razón evidente es que salen más mujeres de las que entran; pero para poder hacer políticas precisas y abordar el problema realmente hace falta evaluar diferentes factores, a saber
+* El cambio en términos absolutos y relativos del número de mujeres en la titulación.
+* La existencia, o no, de un punto de inflexión en esta tendencia.
+* Los porcentajes *reales* en universidades públicas de mujeres, y cómo varía por región y por universidad individual.
+* La tendencia general y las variaciones particulares por universidad.
+* Finalmente, y particularizando en la Universidad de Granada, si ha habido algún impacto medible de las políticas llevadas a cabo principalmente por la Escuela Técnica Superior de Ingeniería Informática a través de la Oficina de Software Libre de la Universidad de Granada.
+
+No se han encontrado muchos estudios de este estilo hasta el momento; un estudio no muy reciente [@galpin1993gender] se concentra en una universidad sudafricana, por ejemplo. Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas en el medio, incluso el largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirman que las chicas tienen una idea de las carreras dominada por los estereotipos de género; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. 
+
+```
 ggplot(data.por.uni,aes(x=Curso,y=Valor,group=Universidad,color=Universidad))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 data.total <- data[data$Universidad=='Unis sin UNED',]
 ggplot(data.total,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
@@ -101,11 +117,10 @@ ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujer
 
 ```
 
-## Introducción
-
-
 ## Resultados
 
 ## Agradecimientos
 
 Informe elaborado con la colaboración de la Fundación Española para la Ciencia y la Tecnología-Ministerio de Economía, Industria y Competitividad bajo el proyecto  FCT-2016-11678.
+
+## Referencias
