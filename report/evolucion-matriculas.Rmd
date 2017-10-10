@@ -58,6 +58,8 @@ ggplot(data.percentage,aes(x=Curso,y=porcentaje,fill=porcentaje))+geom_bar(stat=
 
 Salvo un pequeño cambio de tendencia en los cursos de 1997 a 1999 que corresponderían al primer pico, el descenso ha sido constante, desde un porcentaje inicial del 30% a un porcentaje total alrededor del 12%; es decir, aproximadamente de cada diez matrículas en Informática en las universidades españolas, 1 es una mujer. 
 
+Para analizar las tendencias compararemos la situación en el último curso. 
+
 ```{r poruniversidad, echo=FALSE}
 # Calcula porcentajes y lo traza
 data <-  spread(data,Genero,Valor)
@@ -67,9 +69,22 @@ mutate.delta <- data %>% group_by(Universidad) %>% mutate(delta=c(NA,diff(Mujere
 data$delta.p <- mutate.deltap$delta.p
 data$delta <- mutate.delta$delta
 data.last <- data[data$Curso=="2016-2017",]
-ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje de mujeres 2016-7')
+```
 
+Los porcentajes el último año oscilan entre un número cercano al 20%, en el caso de la universidad de la Rioja, y cerca del 5%, en el caso de la de Lleida. En el extremo más bajo de la serie están varias universidades catalanas, todas salvo la Pompeu Fabra por debajo del 10%. La media nacional, marcada por las Universidades públicas no presenciales, es de alrededor del 12% y está en la parte derecha del grafo, lo que indica que las universidades con más estudiantes, como la Complutense de Madrid, tienen un porcentaje ligeramente superior a la media nacional. 
+
+A esta situación se ha llegado por cambios a lo largo de los últimos años; centrémenos en el cambio el último curso de la serie en este gráfico que muestra los cambios porcentuales en todas las universidades el último año.
+
+```{r delta, echo=FALSE}
+ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Como se ve, más de la mitad de las universidades han bajado el porcentaje de mujeres, en algunos casos como el de la Universidad de Málaga sustancialmente. En el caso de la Universidad de Cádiz ha subido sustancialmente, pero puede deberse a un fenómeno temporal, en este caso la matrícula masiva de estudiantes con sólo el proyecto fin de carrera, que tenían este año únicamente para terminarlo. La matrícula en general ha subido un 20%, y el incremento del porcentaje de mujeres se debe más bien al hecho de que refleja el porcentaje de varios años atrás, no ninguna política ni tendencia sostenible. 
+
+Precisamente para examinar esa tendencia vemos a continuación el cambio desde los máximos o mínimos de la serie. En este caso se muestra el cambio porcentual que ha habido desde el mínimo de la serie; también en número de mujeres, lo que se muestra con el color de la barra.
+
+```{r maxmin, echo=FALSE}
 # Máximos y mínimos
 data.sin.totales <-  data[data$Universidad!='Univ. Públicas Presenciales',]
 data.sin.totales <- data.sin.totales[data.sin.totales$Universidad!='Univ. Públicas No Presenciales',]
@@ -98,10 +113,19 @@ for(i in 1:length(universidades)){
 }
 
 ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')
+```
 
+Las barras vacías a la izquierda de la imagen muestran que casi la mitad de las universidades han tenido en este último año el mínimo de la serie, y que en el caso de registrar subidas, no han sido de más del 4% o de 55 estudiantes en valores absolutos (y en el caso de la Autónoma de Madrid). Los cambios desde el máximo muestran grandes caídas
+
+```{r maxtolast, echo=FALSE}
 ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Bajada porcentual desde máximo')
+```
 
+Con bajadas porcentuales del 40% en el caso de la Universidad de las Islas Baleares, y caídas muy escasas en el caso de la Pompeu Fabra, que una vez más vuelve a destacar por su estabilidad.
 
+Estos cambios, como se mostró al principio, muestran una tendencia general al descenso, sin que haya "relevo generacional", es decir, que entren suficientes mujeres en informática como para suplir las que salen por graduarse o bien por abandono; pero también es cierto que los cambios porcentuales se deben a que entran más hombres que mujeres. Examinamos a continuación cuáles han sido los cambios porcentuales anuales globales desde el principio de la serie.
+
+```{r porcentajes, echo=FALSE}
 # Porcentajes por curso
 cursos <-  sort(distinct(data.sin.totales, Curso)$Curso)
 
@@ -123,7 +147,7 @@ for(i in 1:length(cursos)){
                                       porcentaje=100*(este.curso.mujeres/este.curso.total)))
     
 }
-ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje nacional de mujeres en Informática')
+#ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje nacional de mujeres en Informática')
 
 totales.curso <- totales.curso %>% mutate(delta.t=c(NA,diff(total)))
 totales.curso <- totales.curso %>% mutate(delta.m=c(NA,diff(mujeres)))
@@ -133,8 +157,19 @@ totales.curso$deltapm <- 100*(totales.curso$delta.m/totales.curso$mujeres)
 ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Cambio anual en las matrículas en informática')
 
 ```
+En estas dos líneas se muestran los cambios porcentuales anuales para el total y para las mujeres en rojo. La curva roja va en casi todos los casos por debajo de la azul, mostrando que cuando aumenta el número de matrículas, el de mujeres lo hace más lentajemente, y cuando disminuye, a partir del curso 2003-2004, la matrícula femenina lo hace de forma más acusada; en los útlimos años hay una pequeña recuperación del número de matrículas, pero una vez más la de las mujeres no se recupera con tanta rapidez. 
 
-## Resultados
+Hay en los últimos años un cambio de tendencia, no demasiado claro por la variabilidad entre las diferentes universidades. El ascenso el último año es bastante acusado y en algunas universidades, como la de Granada, se ha pasado de un descenso continuo y menos acusado a un ascenso en el número de mujeres en el curso 2016-7. Sin embargo, las universidades del entorno en Andalucía Oriental siguen perdiendo matrícula femenina; en algunas otras comunidades autónomas, como Cataluña, la pérdida de matrícula femenina es imparable y llega a extremos como el de la universidad de Lleida, en el que sólo una de cada 20 estudiantes matriculados es una mujer; en concreto sólo hay 12 mujeres entre las 231 personas matriculadas allí. 
+
+## Conclusiones
+
+La diversidad en las carreras tecnológicas ha sido una preocupación constante y universal en los últimos años, debido sobre todo a la pérdida de la misma, que comienza en la entrada a las diferentes carreras y continúa durante la misma y eventualmente en la profesión informática. Es difícil aventurar ninguna hipótesis sobre las causas si no se mira primero a los datos y, sobre todo, a la tendencia.
+
+Los datos mostrados en este trabajo son preocupantes, en el sentido que más de la mitad de las universidades públicas españolas continúan perdiendo mujeres llegando en algunos casos a porcentajes inferiores al 10%. La media, alrededor del 12%, tampoco es demasiado prometedora, convirtiendo de esta forma la profesión en algo casi exclusivamente masculino y haciendo que muchas empresas tengan problemas para aplicar políticas de diversidad en su lugar de trabajo por el simple hecho de que no hay suficientes graduadas informáticas para poder aplicarlo. El último año ha habido 4876 mujeres matriculadas en universidades públicas; con una tasa de graduación de un 20% aproximadamente, eso indica que hay solamente alrededor de 1250 mujeres graduadas en informática todos los años. 
+
+En el caso de la universidad de Granada, hay diferentes factores que pueden haber influido en el cambio de tendencia. Aparte de la política sostenida de realizar campus femeninos todos los años, inicialmente financiados por Google y en el último año por la FECYT, la universidad a través de la Oficina de Software Libre y el Gabinete de Acción Social viene celebrando desde 2009 campus infantiles que forman a las niñas y niños desde los 7 años en programación y ofimática, aparte de tener un enfoque lúdico y creativo de la informática. La nota de corte de Informática ha ascendido en los últimos años, y muchas de las personas matriculadas de ambos géneros han participado en uno o más campus de informática, aparte del campus de chicas. Por lo tanto, el ascenso que se ha visto en el último curso no se debe tanto a la incorporación a la universidad de las aproximadamente 90 chicas que han participado en el campus inicial de 2014, sino más bien a la incorporación de los que participaron en campus anteriores de niños y otras actividades como la semana del código o la hora del código también organizadas desde la ETSIIT y la Oficina de Software Libre. 
+
+Será conveniente analizar también la situación en otras universidades como la Pompeu Fabra y ver qué factores contribuyen a la misma, pero en todo caso está claro que para evitar la pérdida de presencia femenina en las aulas y en la profesión informática hacen falta políticas sostenidas a lo largo del tiempo y una apuesta clara en ese sentido. 
 
 ## Agradecimientos
 
