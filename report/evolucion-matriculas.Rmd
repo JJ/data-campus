@@ -22,7 +22,7 @@ data.por.uni <- data.por.uni[data.por.uni$Universidad!='Unis sin UNED',]
 
 # Introducción
 
-En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de animación a la Informática para todas las edades, es necesario evaluar, si es posible de forma cuantitativa, el impacto de tales políticas. La mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones disgregados por universidad y disciplina.
+En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de motivación a la Informática para todas las edades, es necesario evaluar, si es posible de forma cuantitativa, el impacto de tales políticas. La mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones, disgregados por universidad y disciplina.
 
 La pérdida de diversidad en las titulaciones de Informática que se ha producido en los últimos 30 años tiene diversas causas. La razón evidente es que salen más mujeres de las que entran; pero para poder hacer políticas precisas y abordar el problema realmente hace falta evaluar diferentes factores, a saber
 * El cambio en términos absolutos y relativos del número de mujeres en la titulación.
@@ -48,7 +48,7 @@ data.total <- data[data$Universidad=='Unis sin UNED',]
 ggplot(data.total,aes(x=Curso,y=Valor,group=Genero,color=Genero))+geom_line() +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```   
 
-Como se ve, ha habido una evolución del número de estudiantes de informática que alcanzó un pico en el año 2003, para descender de forma más o menos constante hasta la actualidad, en la que parece que se está experimentando un leve repunte. La evolución de las matrículas femeninas sigue más o menos la misma tendencia, aunque con dos picos, uno algo anterior y otro simultáneo, y un descenso constante desde el curso 2003-4 que parece que se está deteniendo en el último año, por contrapartida al aumento que ha experimentado la matrícula total este último curso registrado. La evolución del porcentaje se muestra en la gráfica siguiente.
+Como se ve, ha habido una evolución del número de estudiantes de Informática que alcanzó un pico en el año 2003, para descender de forma más o menos constante hasta la actualidad, en la que parece que se está experimentando un leve repunte. La evolución de las matrículas femeninas sigue más o menos la misma tendencia, aunque con dos picos, uno algo anterior y otro simultáneo, y un descenso constante desde el curso 2003-4 que parece que se está deteniendo en el último año, por contrapartida al aumento que ha experimentado la matrícula total este último curso registrado. La evolución del porcentaje se muestra en la gráfica siguiente.
 
 ```{r porcentaje, echo=FALSE}
 data.percentage <- spread(data.total,Genero,Valor)
