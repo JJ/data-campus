@@ -1,7 +1,7 @@
 ---
 title: "Evolución de la matrícula femenina en universidades públicas españolas"
 author: "JJ Merelo"
-date: "9 de octubre de 2017"
+date: "11 de octubre de 2017"
 output: pdf_document
 bibliography: refs.bib
 abstract: "Los últimos años han visto una disminución en el porcentaje de mujeres en los estudios universitarios de informática tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, aumentando la diversidad en las aulas. Sin embargo, este declive a nivel nacional que resulta evidente no se ha estudiado sistemáticamente hasta este informe. Este estudio sistemático persigue por un lado establecer cuales son las tendencias actuales para constatar o no lo que por otro lado resulta evidente, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias globales en matrículas en los estudios de Informática. Este estudio es un primer paso para establecer políticas que permitan atajar estas causas a todos los niveles. Los datos que se usan son datos oficiales del ministerio y abarcan desde 1986 hasta el último año disponible, 2016-2017"
@@ -74,7 +74,7 @@ ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcent
 
 Los porcentajes el último año oscilan entre un número cercano al 20%, en el caso de la universidad de la Rioja, y cerca del 5%, en el caso de la de Lleida. En el extremo más bajo de la serie están varias universidades catalanas, todas salvo la Pompeu Fabra por debajo del 10%. La media nacional, marcada por las Universidades públicas no presenciales, es de alrededor del 12% y está en la parte derecha del grafo, lo que indica que las universidades con más estudiantes, como la Complutense de Madrid, tienen un porcentaje ligeramente superior a la media nacional. 
 
-A esta situación se ha llegado por cambios a lo largo de los últimos años; centrémenos en el cambio el último curso de la serie en este gráfico que muestra los cambios porcentuales en todas las universidades el último año.
+A esta situación se ha llegado por cambios a lo largo de los últimos años; centrémonos en el cambio el último curso de la serie en este gráfico que muestra los cambios porcentuales en todas las universidades el último año.
 
 ```{r delta, echo=FALSE}
 ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
@@ -125,7 +125,7 @@ Con bajadas porcentuales del 40% en el caso de la Universidad de las Islas Balea
 
 Estos cambios, como se mostró al principio, muestran una tendencia general al descenso, sin que haya "relevo generacional", es decir, que entren suficientes mujeres en informática como para suplir las que salen por graduarse o bien por abandono; pero también es cierto que los cambios porcentuales se deben a que entran más hombres que mujeres. Examinamos a continuación cuáles han sido los cambios porcentuales anuales globales desde el principio de la serie.
 
-```{r porcentajes, echo=FALSE}
+```{r porcentajes, echo=FALSE, warning=FALSE}
 # Porcentajes por curso
 cursos <-  sort(distinct(data.sin.totales, Curso)$Curso)
 
@@ -157,11 +157,12 @@ totales.curso$deltapm <- 100*(totales.curso$delta.m/totales.curso$mujeres)
 ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Cambio anual en las matrículas en informática')
 
 ```
-En estas dos líneas se muestran los cambios porcentuales anuales para el total y para las mujeres en rojo. La curva roja va en casi todos los casos por debajo de la azul, mostrando que cuando aumenta el número de matrículas, el de mujeres lo hace más lentajemente, y cuando disminuye, a partir del curso 2003-2004, la matrícula femenina lo hace de forma más acusada; en los útlimos años hay una pequeña recuperación del número de matrículas, pero una vez más la de las mujeres no se recupera con tanta rapidez. 
+
+En estas dos líneas se muestran los cambios porcentuales anuales para el total y para las mujeres en rojo. La curva roja va en casi todos los casos por debajo de la azul, mostrando que cuando aumenta el número de matrículas, el de mujeres lo hace más lentamente, y cuando disminuye, a partir del curso 2003-2004, la matrícula femenina lo hace de forma más acusada; en los últimos años hay una pequeña recuperación del número de matrículas, pero una vez más la de las mujeres no se recupera con tanta rapidez. 
 
 Hay en los últimos años un cambio de tendencia, no demasiado claro por la variabilidad entre las diferentes universidades. El ascenso el último año es bastante acusado y en algunas universidades, como la de Granada, se ha pasado de un descenso continuo y menos acusado a un ascenso en el número de mujeres en el curso 2016-7. Sin embargo, las universidades del entorno en Andalucía Oriental siguen perdiendo matrícula femenina; en algunas otras comunidades autónomas, como Cataluña, la pérdida de matrícula femenina es imparable y llega a extremos como el de la universidad de Lleida, en el que sólo una de cada 20 estudiantes matriculados es una mujer; en concreto sólo hay 12 mujeres entre las 231 personas matriculadas allí. 
 
-## Conclusiones
+# Conclusiones
 
 La diversidad en las carreras tecnológicas ha sido una preocupación constante y universal en los últimos años, debido sobre todo a la pérdida de la misma, que comienza en la entrada a las diferentes carreras y continúa durante la misma y eventualmente en la profesión informática. Es difícil aventurar ninguna hipótesis sobre las causas si no se mira primero a los datos y, sobre todo, a la tendencia.
 
