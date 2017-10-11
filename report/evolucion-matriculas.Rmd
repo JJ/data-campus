@@ -1,10 +1,10 @@
 ---
-title: "Evolución de la matrícula femenina en universidades públicas españolas"
+title: "Evolución de la matrícula femenina en el grado de Informática en universidades públicas españolas"
 author: "JJ Merelo, Cecilia Merelo"
 date: "11 de octubre de 2017"
 output: pdf_document
 bibliography: refs.bib
-abstract: "Los últimos años han visto una disminución en el porcentaje de mujeres en los estudios universitarios de informática, tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, aumentando la diversidad en las aulas. Sin embargo, este declive a nivel nacional que resulta evidente no se ha estudiado sistemáticamente hasta este informe. Este estudio sistemático persigue por un lado establecer cuales son las tendencias actuales para constatar o no lo que por otro lado resulta evidente, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias globales en matrículas en los estudios de Informática. Este estudio es un primer paso para establecer políticas que permitan atajar estas causas a todos los niveles. Los datos que se usan son datos oficiales del ministerio y abarcan desde 1986 hasta el último año disponible, 2016-2017"
+abstract: "Los últimos años han visto una disminución dramática en el porcentaje de mujeres en los estudios universitarios de informática, tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, aumentando la diversidad en las aulas. Sin embargo, este declive a nivel nacional que resulta evidente no se ha estudiado sistemáticamente hasta este informe. Este estudio sistemático persigue por un lado establecer cuales son las tendencias actuales para constatar o no lo que por otro lado resulta evidente, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias globales en matrículas en los estudios de Informática. Este estudio es un primer paso para establecer políticas que permitan atajar estas causas a todos los niveles. Los datos que se usan son datos oficiales del ministerio y abarcan desde 1986 hasta el último año disponible, 2016-2017"
 ---
 
 ```{r setup, include=FALSE}
