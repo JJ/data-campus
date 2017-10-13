@@ -16,14 +16,21 @@ shift @total_file;
 shift @graduados_file;
 for my $t (@total_file) {
   my ($uni,$curso,$genero,$valor)=split(",",$t);
-  $total{$uni."_".$curso."_".$genero} = $valor;
+  $total{$uni."_".$curso}{$genero} = $valor;
 }
 
-say "Universidad,Curso,Genero,Graduados,Total";
+my %graduados;
 for my $t (@graduados_file) {
   my ($uni,$curso,$genero,$valor)=split(/,\s+/,$t);
-  next if !$total{$uni."_".$curso."_".$genero};
-  say "$uni,$curso,$genero,$valor,", $total{$uni."_".$curso."_".$genero};
+  next if !$total{$uni."_".$curso};
+  $graduados{$uni."_".$curso}{$genero} = $valor;
 }
 
+say "Universidad,Curso,M.Total,M.Mujeres,Graduados.Total,Graduadas";
+
+for my $k ( sort keys %graduados ) {
+  my ($u,$y) = split("_",$k);
+  next if !$graduados{$k}{"Total"} or  !$graduados{$k}{"Mujeres"};
+  say "$u,$y,", $total{$k}{"Total"},",",$total{$k}{"Mujeres"},",", $graduados{$k}{"Total"},",",$graduados{$k}{"Mujeres"};
+}
 
