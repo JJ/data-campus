@@ -1,10 +1,10 @@
 ---
 title: "Evolución de la matrícula femenina en el grado de Informática en universidades públicas andaluzas"
-author: "JJ Merelo, Cecilia Merelo"
-date: "2 de noviembre de 2017"
+author: "JJ Merelo"
+date: "5 de noviembre de 2017"
 output: pdf_document
 bibliography: refs.bib
-abstract: "Los últimos años han visto una disminución dramática en el porcentaje de mujeres en los estudios universitarios de informática, tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, aumentando la diversidad en las aulas. Sin embargo, este declive a nivel nacional que resulta evidente no se ha estudiado sistemáticamente hasta este informe. Este estudio sistemático persigue por un lado establecer cuales son las tendencias actuales para constatar o no lo que por otro lado resulta evidente, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias globales en matrículas en los estudios de Informática. Este estudio es un primer paso para establecer políticas que permitan atajar estas causas a todos los niveles. Los datos que se usan son datos oficiales del ministerio y abarcan desde 1986 hasta el último año disponible, 2016-2017"
+abstract: "Los últimos años han visto una disminución dramática en el porcentaje de mujeres en los estudios universitarios de informática. Esta disminución ha sido tan alarmante que ha movido a una serie de empresas, instituciones y a las propias universidades a tomar medidas para tratar de evitarlo, a base de realizar una serie de acciones para aumentar la diversidad en las aulas. Hasta ahora no se había hecho este tipo de estudio a nivel andaluz; con él intentamos establecer cuales son las tendencias actuales para constatar o no lo que la evidencia anecdótica revela, analizar si es posible alguna de las causas, todo ello en el contexto de las tendencias nacionales y globales en matrículas en los estudios de Informática, tratando de dar los primeros pasos para establecer actividades a diferentes niveles que permitan atajar estas causas. Los datos que se usan son datos oficiales del Ministerio de Educación y abarcan desde el curso 1985-1986 hasta el último año disponible, 2016-2017"
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +38,7 @@ for(i in 1:length(cursos)){
 
 # Introducción
 
-En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de motivación a la Informática para todas las edades, es necesario evaluar, si es posible de forma cuantitativa, el impacto de tales políticas. La mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones, disgregados por universidad y disciplina.
+En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de motivación a la Informática para todas las edades conviene evaluar de forma numérica su impacto, y la mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones, disgregados por universidad y disciplina.
 
 La pérdida de diversidad en las titulaciones de Informática que se ha producido en los últimos 30 años tiene diversas causas. La razón evidente es que salen más mujeres de las que entran; pero para poder hacer políticas precisas y abordar el problema realmente hace falta evaluar diferentes factores, a saber
 * El cambio en términos absolutos y relativos del número de mujeres en la titulación.
@@ -60,7 +60,7 @@ Todos los meses de marzo, aproximadamente, las universidades españolas remiten 
 Analicemos primero cómo ha evolucionado el número de estudiantes, total y el de mujeres. En este análisis analizamos sólo las universidades presenciales.
 
 ```{r total, echo=FALSE}
-ggplot()+geom_line(data=matriculas.year,aes(x=curso,y=total,group=1,color="Total"))+geom_line(data=matriculas.year,aes(x=curso,y=mujeres,group=1,color="Mujeres")) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplot()+geom_line(data=matriculas.year,aes(x=curso,y=total,group=1,color="Total"))+geom_line(data=matriculas.year,aes(x=curso,y=mujeres,group=1,color="Mujeres")) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ guides(color=guide_legend(title="Matrículas"))
 ```   
 
 Como se ve, ha habido una evolución del número de estudiantes de Informática que alcanzó un pico en el año 2003, para descender de forma más o menos constante hasta la actualidad, en la que parece que se está experimentando un leve repunte. La evolución de las matrículas femeninas sigue más o menos la misma tendencia, aunque con dos picos, uno algo anterior y otro simultáneo, y un descenso constante desde el curso 2003-4 que parece que se está deteniendo en el último año, por contrapartida al aumento que ha experimentado la matrícula total este último curso registrado. La evolución del porcentaje se muestra en la gráfica siguiente.
@@ -88,7 +88,7 @@ Los porcentajes el último año oscilan entre un número cercano al 20%, en el c
 A esta situación se ha llegado por cambios a lo largo de los últimos años; centrémonos en el cambio el último curso de la serie en este gráfico que muestra los cambios porcentuales en todas las universidades el último año.
 
 ```{r delta, echo=FALSE}
-ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab("Universidades")+ylab("Cambio último año")
 ```
 
 Como se ve, más de la mitad de las universidades han bajado el porcentaje de mujeres, en algunos casos como el de la Universidad de Málaga sustancialmente. En el caso de la Universidad de Cádiz ha subido sustancialmente, pero puede deberse a un fenómeno temporal, en este caso la matrícula masiva de estudiantes con sólo el proyecto fin de carrera, que tenían este año únicamente para terminarlo. La matrícula en general ha subido un 20%, y el incremento del porcentaje de mujeres se debe más bien al hecho de que refleja el porcentaje de varios años atrás, no ninguna política ni tendencia sostenible. 
@@ -113,20 +113,20 @@ for(i in 1:length(universidades)){
     
     porcentajes.universidad <- rbind( porcentajes.universidad,
                                      data.frame(uni=universidades[i],
-                                                last=last*100,
-                                                max=this.max*100,
-                                                min=this.min*100,
-                                                min.to.last= (last - this.min)*100,
-                                                max.to.last= (this.max - last)*100 ))
+                                                last=last,
+                                                max=this.max,
+                                                min=this.min,
+                                                min.to.last= (last - this.min),
+                                                max.to.last= (this.max - last) ))
 }
 
-ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')
+ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')+ guides(fill=guide_legend(title="Máx. matrículas"))+ylab("Aumento de matrículas desde mínimo")
 ```
 
 Las barras vacías a la izquierda de la imagen muestran que casi la mitad de las universidades han tenido en este último año el mínimo de la serie, y que en el caso de registrar subidas, no han sido de más del 4% o de 55 estudiantes en valores absolutos (y en el caso de la Autónoma de Madrid). Los cambios desde el máximo muestran grandes caídas
 
 ```{r maxtolast, echo=FALSE}
-ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Bajada porcentual desde máximo')
+ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ylab('Descenso desde máximo')+guides(fill=guide_legend(title="Min. matrículas"))+xlab("Universidad")
 ```
 
 Con bajadas porcentuales del 40% en el caso de la Universidad de las Islas Baleares, y caídas muy escasas en el caso de la Pompeu Fabra, que una vez más vuelve a destacar por su estabilidad.
@@ -162,7 +162,7 @@ totales.curso <- totales.curso %>% mutate(delta.m=c(NA,diff(mujeres)))
 totales.curso$deltapt <- 100*(totales.curso$delta.t/totales.curso$total)
 totales.curso$deltapm <- 100*(totales.curso$delta.m/totales.curso$mujeres)
 
-ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Cambio anual en las matrículas en informática')
+ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Cambio anual en las matrículas en informática')+xlab("curso")+ylab("Incremento")+guides(color=guide_legend(title="Cambio por curso"))
 
 ```
 
