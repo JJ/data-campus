@@ -1,6 +1,6 @@
 ---
 title: "Evolución de la matrícula femenina en el grado de Informática en universidades públicas andaluzas"
-author: "JJ Merelo"
+author: "JJ Merelo, Cecilia Merelo"
 date: "5 de noviembre de 2017"
 output: pdf_document
 bibliography: refs.bib
@@ -47,7 +47,7 @@ La pérdida de diversidad en las titulaciones de Informática que se ha producid
 
 No se han encontrado muchos estudios de este estilo hasta el momento; un estudio no muy reciente [@galpin1993gender] se concentra en una universidad sudafricana, por ejemplo; otro estudio posterior se refiere a una universidad australiana, la de Murdoch [@downes2000exploratory]; en este caso los porcentajes de matrícula femenina son bastante altos y sin una tendencia descendente clara como ocurre en España. 
 
-Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas en el medio, incluso el largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirman que las chicas tienen una idea de las carreras dominada por los estereotipos de género; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. Estos dos factores tendrán que tenerse en cuenta para analizar el *retraso* entre el diseño y aplicación de una política y su efectividad, aunque los números que manejamos en este caso sólo permiten hacer conjeturas y formular hipótesis que podrán ser validadas con estudios con mayor granularidad o directamente con encuestas *in situ*.
+Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas en el medio, incluso el largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirma que las chicas tienen una idea de las carreras dominada por los estereotipos de género o los denominados sesgos cognitivos, que nos hacen interpretar de forma incoherente o ilógica la información de la que disponemos. Por lo tanto, cuando emitimos juicios normalmente estarán influenciados por estos sesgos.; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. Estos dos factores tendrán que tenerse en cuenta para analizar el *retraso* entre el diseño y aplicación de una política y su efectividad, aunque los números que manejamos en este caso sólo permiten hacer conjeturas y formular hipótesis que podrán ser validadas con estudios con mayor granularidad o directamente con encuestas *in situ*.
 
 Tras analizar los datos para toda España en [@merelomolina17desigualdad], en este artículo particularizaremos esos resultados para Andalucía.
 
@@ -171,7 +171,7 @@ En estas dos líneas se muestran los cambios porcentuales anuales para el total 
 
 # Conclusiones
 
-La diversidad en las carreras tecnológicas y especialmente la informática ha sido una preocupación constante y universal en los últimos años, debido sobre todo a la pérdida de la misma, que comienza en la entrada a las diferentes carreras, continúa por abandonos durante la misma y desemboca eventualmente en la falta de diversidad en la profesión informática. Es difícil aventurar ninguna hipótesis sobre las causas si no se mira primero a los datos y, sobre todo, a la tendencia.
+La diversidad en las carreras tecnológicas y especialmente en la carrera de informática ha sido una preocupación constante y universal en los últimos años, debido sobre todo a la pérdida de la misma, que comienza en la entrada a las diferentes carreras, continúa por abandonos durante la misma y desemboca eventualmente en la falta de diversidad en la profesión informática. Es difícil aventurar ninguna hipótesis sobre las causas si no se mira primero a los datos y, sobre todo, a la tendencia.
 
 Con estos datos se pueden aventurar las causas: la pérdida de interés progresiva en la carrera de informática, que hace que cada año se matriculen menos mujeres y que hizo, incluso en los años de mayor interés general por la carrera, que el porcentaje de mujeres matriculadas fuera descenciendo progresivamente hasta alcanzar la situación actual. Con unas tasas de graduación de alrededor del 10% y 600 matrículas. Andalucía tendrá 60 graduadas al año, menos de diez, en media, en cada provincia. Es prácticamente imposible, con esos números, que los puestos de trabajo ofertados por empresas andaluzas sean cubiertos por mujeres; los empresarios en esa tesitura te comentan que es habitual no recibir ningún currículum de mujeres para los puestos de trabajo ofertado. 
 
