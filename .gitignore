@@ -42,3 +42,5 @@ figure/
 *.out
 *.pdf
 *.tex
+
+report/*.docx
