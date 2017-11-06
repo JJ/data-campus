@@ -17,8 +17,7 @@ abstract: Los últimos años han visto una disminución dramática en el porcent
   si es posible alguna de las causas, todo ello en el contexto de las tendencias nacionales
   y globales en matrículas en los estudios de Informática, tratando de dar los primeros
   pasos para establecer actividades a diferentes niveles que permitan atajar estas
-  causas. Los datos que se usan son datos oficiales del Ministerio de Educación y
-  abarcan desde el curso 1985-1986 hasta el último año disponible, 2016-2017
+  causas.
 ---
 
 ```{r setup, include=FALSE}
@@ -54,23 +53,15 @@ for(i in 1:length(cursos)){
 
 En el marco de la evaluación de las políticas de aumento de la diversidad de la Universidad de Granada, que han incluido tanto un campus dirigido a las chicas de ESO y Bachillerato como otra serie de iniciativas de motivación a la Informática para todas las edades conviene evaluar de forma numérica su impacto, y la mejor forma de hacerlo es usar los datos oficiales del Ministerio de Educación, que periódicamente publica los datos de matrícula en todas las titulaciones, disgregados por universidad y disciplina.
 
-La pérdida de diversidad en las titulaciones de Informática que se ha producido en los últimos 30 años tiene diversas causas, pero una razón inmediata: salen más mujeres de las que entran. Sin embargo, pero para poder realizar acciones precisas y abordar el problema realmente hace falta evaluar diferentes factores, a saber:
+Para poder realizar acciones precisas y abordar el problema realmente hace falta evaluar diferentes factores, a saber:
+
 * El cambio en términos absolutos y relativos del número de mujeres en la titulación.
 * La existencia, o no, de un punto de inflexión en esta tendencia.
 * Los porcentajes *reales* en universidades públicas de mujeres, y cómo varía por universidad individual, así como la tendencia general. 
 
-No se han encontrado muchos estudios de este estilo hasta el momento; un estudio no muy reciente [@galpin1993gender] se concentra en una universidad sudafricana, por ejemplo; otro estudio posterior se refiere a una universidad australiana, la de Murdoch [@downes2000exploratory]; en este caso los porcentajes de matrícula femenina son bastante altos y sin una tendencia descendente clara como ocurre en España. 
+Los autores han realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas al medio o incluso al largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirma que las chicas tienen una idea de las carreras dominada por los estereotipos de género o los denominados sesgos cognitivos, que nos hacen interpretar de forma incoherente o ilógica la información de la que disponemos. Por lo tanto, cuando emitimos juicios normalmente estarán influenciados por estos sesgos; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. Estos dos factores tendrán que tenerse en cuenta para analizar el *retraso* entre el diseño y aplicación de una política y su efectividad, aunque los números que manejamos en este caso sólo permiten hacer conjeturas y formular hipótesis que podrán ser validadas con estudios con mayor granularidad o directamente con encuestas *in situ*.
 
-Por otro lado, el autor ha realizado un análisis de las chicas asistentes a los campus infantiles [@merelomolina16desigualdad], concluyendo que existe un punto de inflexión alrededor de los 10 años en los que las niñas dejan de tener interés por la Informática como una carrera profesional. Esto apunta a que las políticas de aumento de la diversidad deben de hacerse con vistas al medio o incluso al largo plazo. En parte, estos resultados están corroborados por un estudio realizado en el Reino Unido [@great2011girls] que afirma que las chicas tienen una idea de las carreras dominada por los estereotipos de género o los denominados sesgos cognitivos, que nos hacen interpretar de forma incoherente o ilógica la información de la que disponemos. Por lo tanto, cuando emitimos juicios normalmente estarán influenciados por estos sesgos; efectivamente, estos estereotipos perjudican a carreras tales como la Informática. Estos dos factores tendrán que tenerse en cuenta para analizar el *retraso* entre el diseño y aplicación de una política y su efectividad, aunque los números que manejamos en este caso sólo permiten hacer conjeturas y formular hipótesis que podrán ser validadas con estudios con mayor granularidad o directamente con encuestas *in situ*.
-
-Tras analizar los datos para toda España en [@merelomolina17desigualdad], en este artículo particularizaremos esos resultados para Andalucía.
-
-# Resultados
-
-Todos los meses de marzo, aproximadamente, las universidades españolas remiten al Ministerio de Educación los datos de matrícula, una vez que se ha estabilizado la misma y se han validado todos los datos. Estos datos se publican en [la web del ministerio](https://www.educacion.gob.es/educabase/menu.do?type=pcaxis&path=/Universitaria/Series/Estudiantes/Egresados/&file=pcaxis&l=s0). En general, estos datos tienen una alta fiabilidad. 
-Para este estudio, extrajimos los datos de la web y se procesaron para poder tratarse con *scripts en R*. Estos scripts forman parte del fuente de este documento, son software libre y se pueden descargar desde el repositorio del mismo, https://github.com/JJ/data-campus.
-
-Analicemos primero cómo ha evolucionado el número de estudiantes, total y el de mujeres. 
+Tras analizar los datos para toda España en [@merelomolina17desigualdad] procedentes de [la web del ministerio](https://www.educacion.gob.es/educabase/menu.do?type=pcaxis&path=/Universitaria/Series/Estudiantes/Egresados/&file=pcaxis&l=s0). Datos y programas para procesarlo son libres y están en https://github.com/JJ/data-campus. Analicemos primero cómo ha evolucionado el número de estudiantes, total y el de mujeres. 
 
 ```{r total, echo=FALSE}
 ggplot()+geom_line(data=matriculas.year,aes(x=curso,y=total,group=1,color="Total"))+geom_line(data=matriculas.year,aes(x=curso,y=mujeres,group=1,color="Mujeres")) +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ guides(color=guide_legend(title="Matrículas"))
@@ -84,114 +75,9 @@ ggplot(matriculas.year,aes(x=curso,y=porcentaje,fill=porcentaje))+geom_bar(stat=
 
 Salvo un pequeño cambio de tendencia en los años 94-95 y 2002-2003, el descenso ha sido constante, sólo interrumpido con algunos períodos de estancamiento, desde un porcentaje inicial del 30% a un porcentaje total del 10,38%, inferior a la media nacional que está alrededor del 12; es decir, aproximadamente de cada diez matrículas en Informática en las universidades andaluzas, sólo una es una mujer. 
 
-¿Qué va a suceder en el futuro próximo? Para analizar las tendencias compararemos la situación en el último curso del que se tienen datos. 
-
-```{r poruniversidad, echo=FALSE}
-# Calcula porcentajes y lo traza
-mutate.deltap <- data.andalucia %>% group_by(Universidad) %>% mutate(delta.p=c(NA,diff(porcentaje)))
-mutate.delta <- data.andalucia %>% group_by(Universidad) %>% mutate(delta=c(NA,diff(Mujeres)))
-data.andalucia$delta.p <- mutate.deltap$delta.p
-data.andalucia$delta <- mutate.delta$delta
-data.last <- data.andalucia[data.andalucia$Curso=="2016-2017",]
-ggplot(data.last,aes(x=reorder(Universidad,porcentaje),y=porcentaje,fill=porcentaje))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje de mujeres 2016-7')
-```
-
-La situación no es demasiado homogénea. Desde un porcentaje del 8,13 en la universidad de Córdoba se pasa a un 13.35 en la Universidad de Cádiz que, sin embargo y como veremos más adelante, no es demasiado representativo. Sólo tres universidades están por encima de la media, UPO, US y Cádiz, con el resto de las universidades por debajo de la media. Sólo la de Cádiz está por encima de la media nacional. 
-
-Pero, ¿cuál es la tendencia, especialmente en el último año? Centrémonos en el cambio el último curso de la serie en este gráfico que muestra los cambios porcentuales en todas las universidades el último año.
-
-```{r delta, echo=FALSE}
-ggplot(data.last,aes(x=reorder(Universidad,delta.p),y=delta.p,fill=delta))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab("Universidades")+ylab("Cambio último año")
-```
-
-Como se ve, en más de la mitad de las universidades han bajado el porcentaje de mujeres, en algunos casos como el de la Universidad de Málaga sustancialmente. En el caso de la Universidad de Cádiz ha habido un aumento considerable, pero puede deberse a un fenómeno temporal, en este caso la matrícula masiva de estudiantes con sólo el proyecto fin de carrera, que tenían este año únicamente para terminarlo. La matrícula en general ha subido un 20%, y el incremento del porcentaje de mujeres se debe más bien al hecho de que refleja el porcentaje de varios años atrás, no ninguna política ni tendencia sostenible. En Huelva el aumento sí ha sido genuino, pero es la segunda universidad con menos estudiantes de informática de todas las andaluzas, y tiene por tanto grandes variaciones en porcentajes de un año a otro. En concreto, ha aumentado el número de estudiantes en 15, cinco de los cuales son mujeres. Lo mismo puede decirse de la Pablo de Olavide, que en realidad tiene 207 estudiantes en Informática, 22 de las cuales son mujeres. Y el aumento de Granada es sólo el último año, aunque el número de mujeres en primera matrícula viene aumentando en los tres últimos años. Eso viene a indicar que no se puede llegar a hablar de verdaderas tendencias en algunas universidades; si acaso, podemos ser moderadamente optimistas en la universidad de Granada. Para el resto, o ha alcanzado su mínimo el número de mujeres o no podemos realmente decir que haya un aumento sólido; en realidad, Huelva tiene el 2º número más bajo de su historia (el más bajo fue el curso anterior), Granada está a niveles de 2013-2014 (cuando se comenzaron los campus de chicas) y Cádiz está a niveles de 2012-2013, después de cuyo año perdió el 25% de las mujeres matriculadas. El año anterior de la serie, 2015-2016, cádiz tuvo el número de mujeres más bajo de su historia, 53, casi exactamente el 9% de las matrículas. 
-
-Es interesante, por la misma razón, ver las variaciones desde el máximo y mínimo de la serie. A continuación, aumento desde el mínimo. 
-
-```{r maxmin, echo=FALSE}
-# Máximos y mínimos
-universidades <-  distinct(data.andalucia, Universidad)$Universidad
-porcentajes.universidad <- data.frame(uni=character(),
-                                      max=double(),
-                                      min=double(),
-                                      last=double(),
-                                      min.to.last=double(),
-                                      max.to.last=double)
-
-for(i in 1:length(universidades)){
-    porcentaje.esta <- data.andalucia[data.andalucia$Universidad == universidades[i],]$porcentaje
-    last <- porcentaje.esta[length(porcentaje.esta)]
-    this.max <- max(porcentaje.esta)
-    this.min <- min(porcentaje.esta)
-    
-    porcentajes.universidad <- rbind( porcentajes.universidad,
-                                     data.frame(uni=universidades[i],
-                                                last=last,
-                                                max=this.max,
-                                                min=this.min,
-                                                min.to.last= (last - this.min),
-                                                max.to.last= (this.max - last) ))
-}
-
-ggplot(porcentajes.universidad,aes(x=reorder(uni,min.to.last),y=min.to.last,fill=max))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Subida porcentual desde mínimo')+ guides(fill=guide_legend(title="Máx. matrículas"))+ylab("Aumento de matrículas desde mínimo")
-```
-
-Volvemos a ver que 5 de las 9 universidades alcanzaron el mínimo en este último año, y en realidad Cádiz lo hizo el año anterior. UPO y Huelva lo alcanzaron mucho antes, pero al ser grados con pocos estudiantes la oscilación anual es muy grande; en el año anterior no alcanzaron el mínimo, pero sí números cercanos al mismo. 
-
-El panorama es diferente, y más desolador, si miramos cambios desde el máximo. 
-
-```{r maxtolast, echo=FALSE}
-ggplot(porcentajes.universidad,aes(x=reorder(uni,max.to.last),y=max.to.last,fill=min))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ylab('Descenso desde máximo')+guides(fill=guide_legend(title="Min. matrículas"))+xlab("Universidad")
-```
-
-Huelva ha perdido 40 puntos porcentuales desde el máximo, en el que el 50% de los estudiantes eran mujeres. Los descensos más leves se deben principalmente a que, al ser la implantación de los estudios más tarde los valores máximos, que suelen darse el primer año, no eran tan altos. De hecho, el que la UPO no haya variado tanto es porque el porcentaje mayor de mujeres ha sido del 14,4%, el menor máximo de todas las universidades andaluzas. Es interesante ver que realmente no siempre ha sido una carrera casi exclusivamente masculina la informática; muchas universidades han tenido, sobre todo en los años iniciales, porcentajes alrededor del 30% que, sin ser excelentes, no son preocupantes como empiezan a serlo cuando descienden del 15%.  
-
-Una vez más, estos datos muestran una tendencia general al descenso, un descenso mucho más acusado cuanto mayor era el porcentaje inicial, sin que haya "relevo generacional", es decir, que entren suficientes mujeres en informática como para suplir las que salen por graduarse o bien por abandono; pero también es cierto que los cambios porcentuales se deben a que la matrícula aumenta más para los hombres que para las mujeres. Examinamos a continuación cuáles han sido los cambios porcentuales anuales globales desde el principio de la serie.
-
-```{r porcentajes, echo=FALSE, warning=FALSE}
-# Porcentajes por curso
-cursos <-  sort(distinct(data.andalucia, Curso)$Curso)
-
-totales.curso <- data.frame(curso=character(),
-                            mujeres=integer(),
-                            total=integer(),
-                            porcentaje=double())
-
-for(i in 1:length(cursos)){
-    
-    este.curso <- data.andalucia[data.andalucia$Curso==cursos[i],]
-    este.curso.mujeres <- sum(este.curso$Mujeres)
-    este.curso.total <- sum(este.curso$Total)
-
-    totales.curso <- rbind( totales.curso,
-                           data.frame(curso=cursos[i],
-                                      mujeres=este.curso.mujeres,
-                                      total=este.curso.total,
-                                      porcentaje=100*(este.curso.mujeres/este.curso.total)))
-    
-}
-#ggplot(totales.curso,aes(x=curso,y=porcentaje,fill=total))+geom_bar(stat="Identity") +theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+xlab('Porcentaje nacional de mujeres en Informática')
-
-totales.curso <- totales.curso %>% mutate(delta.t=c(NA,diff(total)))
-totales.curso <- totales.curso %>% mutate(delta.m=c(NA,diff(mujeres)))
-totales.curso$deltapt <- 100*(totales.curso$delta.t/totales.curso$total)
-totales.curso$deltapm <- 100*(totales.curso$delta.m/totales.curso$mujeres)
-
-ggplot()+geom_line(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_point(data=totales.curso,aes(x=curso,y=deltapm,group=1,color='Mujeres'))+geom_line(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+geom_point(data=totales.curso,aes(x=curso,y=deltapt,group=1,color='Total'))+theme_tufte() + theme(axis.text.x = element_text(angle = 90, hjust = 1))+ggtitle('Cambio anual en las matrículas en informática')+xlab("curso")+ylab("Incremento")+guides(color=guide_legend(title="Cambio por curso"))
-
-```
-
-En estas dos líneas se muestran los cambios porcentuales anuales para el total (en azul) y para las mujeres en rojo. La curva roja va en casi todos los casos por debajo de la azul, mostrando que cuando aumenta el número de matrículas, el de mujeres lo hace más lentamente, y cuando disminuye, a partir del curso 2004-2005, en el que los cambios porcentuales son negativos, la matrícula femenina lo hace de forma más acusada; en los últimos años se desacelera el descenso en el número de matrículas, con 47 menos estudiantes registrados en informática, 18 de las cuales son mujeres. Hoy en día, hay aproximadamente la mitad de matrículas en informática de las que se alcanzaron en el 2004-2005, cuando fueron 12581. El máximo de mujeres se alcanzó dos años antes, con 2261 mujeres. Hoy en día, las 686 mujeres matriculadas son menos de la tercera parte de las que fueron en su punto álgido. 
-
-# Conclusiones
-
-La diversidad en las carreras tecnológicas y especialmente en la carrera de informática ha sido una preocupación constante y universal en los últimos años, debido sobre todo a la pérdida de la misma, que comienza en la entrada a las diferentes carreras, continúa por abandonos durante la misma y desemboca eventualmente en la falta de diversidad en la profesión informática. Es difícil aventurar ninguna hipótesis sobre las causas si no se mira primero a los datos y, sobre todo, a la tendencia.
-
 Con estos datos se pueden aventurar las causas: la pérdida de interés progresiva en la carrera de informática, que hace que cada año se matriculen menos mujeres y que hizo, incluso en los años de mayor interés general por la carrera, que el porcentaje de mujeres matriculadas fuera descenciendo progresivamente hasta alcanzar la situación actual. Con unas tasas de graduación de alrededor del 10% y 600 matrículas. Andalucía tendrá 60 graduadas al año, menos de diez, en media, en cada provincia. Es prácticamente imposible, con esos números, que los puestos de trabajo ofertados por empresas andaluzas sean cubiertos por mujeres; los empresarios en esa tesitura te comentan que es habitual no recibir ningún currículum de mujeres para los puestos de trabajo ofertado. 
 
-La falta de referentes femeninos en el campo, de informáticas que impartan clase, sean madres de chicas que lleguen a la universidad o vayan a institutos a comentar su experiencia, es uno de los factores que puede hacer en el futuro haya menos vocaciones informáticas. Afortunadamente, se pueden trabajar esas vocaciones de muchas otras formas, y se está iniciando una colaboración entre las universidades de Almería, Málaga y Granada que pretende crear vocaciones iniciando en las edades más tempranas, cuando se puede tener más efectividad. Esperemos, por el bien de la carrera, que esta investigación dé frutos. 
-
-
+Afortunadamente, se pueden trabajar esas vocaciones de muchas otras formas, y se está iniciando una colaboración entre las universidades de Almería, Málaga y Granada que pretende crear vocaciones iniciando en las edades más tempranas, cuando se puede tener más efectividad. Esperemos, por el bien de la carrera, que esta investigación dé frutos. 
 
 ## Agradecimientos
 
