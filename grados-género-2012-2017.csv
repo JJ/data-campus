@@ -7,9 +7,9 @@ Año,Carrera,Mujeres,Hombres,NuevaMujeres,NuevaHombres,NotaCorte
 2017,Informática (Ceuta),10,50,
 2017,Teleco,90,380,20,83,9.450
 2017,DGIIM,50,140,15,36,11.781
-2016,DGIIM,38,122,,,11.127
-2016,Teleco,86,386,,,10.594
-2016,Informática,126,1148,,,7.798
+2016,DGIIM,38,122,10,33,11.127
+2016,Teleco,86,386,22,65,10.594
+2016,Informática,126,1148,23,219,7.798
 2016,Informática (Ceuta),9,43
 2015,Informática,112,1051,,,
 2015,Informática (Ceuta),10,39
