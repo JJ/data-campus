@@ -17,3 +17,5 @@ data.gii <- data.v2[data.v2$Carrera=='Informática',]
 ggplot(data.gii,aes(x=Año,y=Valor,fill=factor(Género)))+geom_bar(stat = "identity")
 ggplot(data.gii,aes(x=Año,y=Valor/total,fill=factor(Género)),position="fill")+geom_bar(stat = "identity")+geom_text(aes(label=Género),position=position_stack(vjust=0.5),size=10)+theme_tufte()
 
+datos.nota <- data[!is.na(data$NotaCorte),]
+ggplot(datos.nota, aes(x=NotaCorte,y=porcentajeNueva,color=Carrera,shape=factor(Año),size=NuevaMujeres))+geom_point()+theme_tufte()
